@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -50,12 +49,12 @@ const CardosoInfluencer = () => {
     setTimeout(() => {
       setIsLoading(false);
       toast({
-        title: "Compra iniciada!",
-        description: "Entre em contato via WhatsApp para finalizar sua compra.",
+        title: "Redirecionando para pagamento!",
+        description: "Após o pagamento, envie o comprovante via WhatsApp para receber o link do Telegram.",
         duration: 5000,
       });
-      // Open WhatsApp
-      window.open('https://wa.me/5511911817210?text=Olá!%20Gostaria%20de%20comprar%20o%20pacote%20de%20figurinhas%20Cardoso%20Influencer.', '_blank');
+      // Open payment link
+      window.open('https://loja.infinitepay.io/modas_cardoso/sqj1922-figurinhas-pra-insta', '_blank');
     }, 1500);
   };
 
@@ -115,6 +114,10 @@ const CardosoInfluencer = () => {
                   </span>
                 )}
               </Button>
+            </div>
+            
+            <div className="mt-4 text-primary/80 animate-slide-up">
+              <p>Após o pagamento, envie o comprovante via WhatsApp para receber o link de acesso do Telegram</p>
             </div>
           </div>
         </section>
@@ -196,7 +199,7 @@ const CardosoInfluencer = () => {
               <FeatureCard 
                 step="2"
                 title="Envie o Comprovante"
-                description="Entre em contato via WhatsApp e envie o comprovante de pagamento."
+                description="Entre em contato via WhatsApp e envie o comprovante de pagamento para receber o link do Telegram."
                 icon={<Send className="h-10 w-10 text-primary" />}
               />
               
@@ -256,6 +259,10 @@ const CardosoInfluencer = () => {
                   >
                     {isLoading ? "Processando..." : "Comprar Agora"}
                   </Button>
+                  
+                  <p className="text-white/70 text-sm mt-3">
+                    Após o pagamento, envie o comprovante via WhatsApp para receber o link do Telegram
+                  </p>
                 </div>
               </CardContent>
             </Card>
