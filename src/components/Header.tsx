@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X, Catalog } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
   Sheet,
@@ -54,12 +54,12 @@ const Header = () => {
           {/* Desktop Menu */}
           <nav className="hidden md:flex items-center space-x-1">
             <NavLinks />
-            <Link to="#shop">
+            <a href="https://wa.me/c/5511911817210" target="_blank" rel="noopener noreferrer">
               <Button className="quote-btn ml-4 text-black bg-primary hover:bg-primary/90 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2">
-                <ShoppingBag size={18} />
-                Loja Online
+                <Catalog size={18} />
+                Catálogo
               </Button>
-            </Link>
+            </a>
           </nav>
 
           {/* Mobile Menu using Sheet from shadcn/ui */}
@@ -75,14 +75,14 @@ const Header = () => {
                 <nav className="flex flex-col items-center space-y-4 text-lg">
                   <NavLinks mobile />
                   <SheetClose asChild>
-                    <Link to="#shop">
+                    <a href="https://wa.me/c/5511911817210" target="_blank" rel="noopener noreferrer" className="w-full">
                       <Button 
                         className="quote-btn mt-4 w-full text-black bg-primary hover:bg-primary/90 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 py-3 text-base"
                       >
-                        <ShoppingBag size={18} />
-                        Loja Online
+                        <Catalog size={18} />
+                        Catálogo
                       </Button>
-                    </Link>
+                    </a>
                   </SheetClose>
                 </nav>
               </SheetContent>
