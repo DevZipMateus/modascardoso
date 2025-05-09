@@ -1,7 +1,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, Instagram, ShoppingBag } from 'lucide-react';
+import { ChevronDown, Instagram, ShoppingBag, BookOpen, Package } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
@@ -43,7 +43,7 @@ const HeroSection = () => {
             Há 3 anos trazendo o que há de melhor em moda feminina para você. Compre pelo Instagram, WhatsApp ou Mercado Livre.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up [animation-delay:900ms] mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up [animation-delay:900ms] mb-8">
             <Button 
               size="lg" 
               className="rounded-md shadow-lg bg-primary hover:bg-primary/90 text-black font-medium transition-all duration-300"
@@ -65,6 +65,36 @@ const HeroSection = () => {
                 <ShoppingBag size={20} className="group-hover:animate-pulse" />
                 <span>Cardoso Influencer</span>
               </Link>
+            </Button>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up [animation-delay:1000ms] mb-16">
+            <Button 
+              size="lg" 
+              className="rounded-md shadow-lg bg-primary hover:bg-primary/90 text-black font-medium transition-all duration-300"
+              asChild
+            >
+              <a href="https://wa.me/c/5511911817210" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <BookOpen size={20} />
+                Ver Catálogo Completo
+              </a>
+            </Button>
+            
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-[#FFE600] text-[#FFE600] hover:bg-[#FFE600]/20 group rounded-md shadow-md transition-all duration-300 flex gap-2"
+              asChild
+            >
+              <a 
+                href="https://lista.mercadolivre.com.br/_CustId_2403813205?item_id=MLB5364306150&category_id=MLB108704&seller_id=2403813205&client=recoview-selleritems&recos_listing=true#origin=vip&component=sellerData&typeSeller=classic" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <Package size={20} className="group-hover:animate-pulse" />
+                <span>Ver Nossos Produtos</span>
+              </a>
             </Button>
           </div>
         </div>
