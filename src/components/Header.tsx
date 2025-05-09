@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Catalog } from 'lucide-react';
+import { Menu, X, BookOpen } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
   Sheet,
@@ -56,7 +55,7 @@ const Header = () => {
             <NavLinks />
             <a href="https://wa.me/c/5511911817210" target="_blank" rel="noopener noreferrer">
               <Button className="quote-btn ml-4 text-black bg-primary hover:bg-primary/90 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2">
-                <Catalog size={18} />
+                <BookOpen size={18} />
                 Catálogo
               </Button>
             </a>
@@ -79,7 +78,7 @@ const Header = () => {
                       <Button 
                         className="quote-btn mt-4 w-full text-black bg-primary hover:bg-primary/90 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 py-3 text-base"
                       >
-                        <Catalog size={18} />
+                        <BookOpen size={18} />
                         Catálogo
                       </Button>
                     </a>
