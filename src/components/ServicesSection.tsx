@@ -1,7 +1,8 @@
+
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Shirt, Palette, TrendingUp, Tag, Crown, MessageSquare, ShoppingBag } from 'lucide-react';
+import { Shirt, Palette, TrendingUp, Tag, Crown, MessageSquare, ShoppingBag, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -63,6 +64,35 @@ const ServicesSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => <ServiceCard key={index} icon={product.icon} title={product.title} description={product.description} index={index} />)}
+        </div>
+
+        {/* WhatsApp Catalog Highlight Section */}
+        <div className="mt-16 bg-primary/5 rounded-xl p-8 border border-primary/20 animate-on-scroll">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-left">
+              <h3 className="text-2xl font-bold mb-2">Catálogo Sempre Atualizado</h3>
+              <p className="text-muted-foreground mb-4">
+                Acesse nosso catálogo completo no WhatsApp para conferir todas as novidades e promoções em tempo real.
+                Nosso catálogo é atualizado diariamente com as últimas peças e tendências!
+              </p>
+            </div>
+            <div>
+              <a 
+                href="https://wa.me/c/5511911817210" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block"
+              >
+                <Button 
+                  size="lg" 
+                  className="bg-primary hover:bg-primary/90 text-black font-bold shadow-lg hover:shadow-xl transform transition-all hover:-translate-y-1 group"
+                >
+                  <BookOpen className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
+                  Ver Catálogo Completo
+                </Button>
+              </a>
+            </div>
+          </div>
         </div>
 
         <div className="mt-16 text-center animate-on-scroll">
