@@ -2,7 +2,8 @@
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Shirt, Palette, TrendingUp, Tag, Crown, MessageSquare } from 'lucide-react';
+import { Shirt, Palette, TrendingUp, Tag, Crown, MessageSquare, ShoppingBag } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -88,7 +89,12 @@ const ServicesSection = () => {
         </div>
 
         <div className="mt-16 text-center animate-on-scroll">
-          
+          <Link to="#shop">
+            <Button className="bg-primary hover:bg-primary/90 text-black font-bold px-8 py-6 text-lg rounded-md shadow-md flex items-center gap-2">
+              <ShoppingBag size={20} />
+              Ver Loja Online
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
