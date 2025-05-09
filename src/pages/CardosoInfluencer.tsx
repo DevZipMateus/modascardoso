@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -6,7 +5,14 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { useToast } from '@/components/ui/use-toast';
-import { ShoppingBag, CheckCircle, Instagram, Send } from 'lucide-react';
+import { ShoppingBag, CheckCircle, Instagram, Send, Images } from 'lucide-react';
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from "@/components/ui/carousel";
 
 const CardosoInfluencer = () => {
   const { toast } = useToast();
@@ -46,6 +52,17 @@ const CardosoInfluencer = () => {
     }, 1500);
   };
 
+  const figurePackImages = [
+    "/lovable-uploads/1057757006419262.jpeg",
+    "/lovable-uploads/1238336154575681.jpeg",
+    "/lovable-uploads/1573851123296440.jpeg",
+    "/lovable-uploads/1594652034536857.jpeg",
+    "/lovable-uploads/1783902555863608.jpeg",
+    "/lovable-uploads/1860981314714955.jpeg", 
+    "/lovable-uploads/553656341119775.jpeg",
+    "/lovable-uploads/693703783064581.jpeg"
+  ];
+
   return (
     <div className="overflow-x-hidden bg-black text-white">
       <Header />
@@ -83,6 +100,56 @@ const CardosoInfluencer = () => {
                   </span>
                 )}
               </Button>
+            </div>
+          </div>
+        </section>
+        
+        {/* Image Gallery Section */}
+        <section className="section-padding py-16 bg-black">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">
+                Exemplos de Figurinhas
+              </h2>
+              <p className="text-white/70 max-w-2xl mx-auto animate-on-scroll mb-8">
+                Confira alguns exemplos das mais de 15.000 figurinhas disponíveis no nosso pacote exclusivo
+              </p>
+            </div>
+
+            {/* Desktop Gallery Grid */}
+            <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-on-scroll">
+              {figurePackImages.map((image, index) => (
+                <div key={index} className="overflow-hidden rounded-lg border border-primary/20 aspect-square">
+                  <img 
+                    src={image} 
+                    alt={`Exemplo de figurinha ${index + 1}`} 
+                    className="w-full h-full object-contain bg-black/80" 
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile Carousel */}
+            <div className="md:hidden animate-on-scroll">
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {figurePackImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="p-1">
+                        <div className="overflow-hidden rounded-lg border border-primary/20 aspect-square">
+                          <img 
+                            src={image} 
+                            alt={`Exemplo de figurinha ${index + 1}`} 
+                            className="w-full h-full object-contain bg-black/80" 
+                          />
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-2" />
+                <CarouselNext className="right-2" />
+              </Carousel>
             </div>
           </div>
         </section>
