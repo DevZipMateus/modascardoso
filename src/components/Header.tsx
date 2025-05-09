@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, FileText } from 'lucide-react';
+import { Menu, X, ShoppingBag } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
   Sheet,
@@ -36,24 +37,26 @@ const Header = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'py-3 bg-background/95 backdrop-blur-md shadow-nav' 
-          : 'py-5 bg-transparent'
+          ? 'py-3 bg-black/95 backdrop-blur-md shadow-nav' 
+          : 'py-5 bg-black/80 backdrop-blur-sm'
       }`}
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
-          <a href="#" className="relative z-20">
-            <h1 className="text-2xl font-display font-bold text-secondary-foreground">
-              <span className="text-primary">Harmônica</span> Contabilidade
-            </h1>
-          </a>
+          <Link to="/" className="relative z-20 flex items-center">
+            <img 
+              src="/lovable-uploads/48f3b6a0-e0d5-443f-b3c6-3b1ff9dec03a.png" 
+              alt="Modas Cardoso" 
+              className="h-10 md:h-12" 
+            />
+          </Link>
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex items-center space-x-1">
             <NavLinks />
-            <Button className="quote-btn ml-4 text-white rounded-md transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2">
-              <FileText size={18} />
-              Fale Conosco
+            <Button className="quote-btn ml-4 text-black bg-primary hover:bg-primary/90 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2">
+              <ShoppingBag size={18} />
+              Loja Online
             </Button>
           </nav>
 
@@ -61,18 +64,22 @@ const Header = () => {
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-10 w-10 text-secondary-foreground">
+                <Button variant="ghost" size="icon" className="h-10 w-10 text-white">
                   <Menu size={24} />
                   <span className="sr-only">Abrir menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="top" className="pt-16 pb-8 px-6">
+              <SheetContent side="top" className="pt-16 pb-8 px-6 bg-black text-white">
                 <nav className="flex flex-col items-center space-y-4 text-lg">
                   <NavLinks mobile />
                   <SheetClose asChild>
-                    <Button className="quote-btn mt-4 w-full text-white rounded-md transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 py-3 text-base">
-                      <FileText size={18} />
-                      Fale Conosco
+                    <Button 
+                      className="quote-btn mt-4 w-full text-black bg-primary hover:bg-primary/90 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 py-3 text-base"
+                      as={Link}
+                      to="#shop"
+                    >
+                      <ShoppingBag size={18} />
+                      Loja Online
                     </Button>
                   </SheetClose>
                 </nav>
@@ -92,29 +99,38 @@ interface NavLinksProps {
 
 const NavLinks = ({ mobile, onClick }: NavLinksProps) => {
   const links = [
-    { name: 'Início', href: '#hero' },
-    { name: 'Sobre Nós', href: '#about' },
-    { name: 'Serviços', href: '#services' },
-    { name: 'Planos', href: '#plans' },
+    { name: 'Início', href: '/' },
+    { name: 'Sobre', href: '#about' },
+    { name: 'Produtos', href: '#services' },
+    { name: 'Instagram', href: 'https://instagram.com/Modas.cardos0' },
+    { name: 'Cardoso Influencer', href: '/cardoso-influencer' },
     { name: 'Contato', href: '#contact' },
   ];
 
   return (
     <>
-      {links.map((link) => (
-        <a
-          key={link.name}
-          href={link.href}
-          className={`font-medium transition-all duration-300 px-3 py-2 rounded-md
-            ${mobile 
-              ? 'text-xl text-foreground hover:text-primary mb-2 w-full text-center py-3' 
-              : 'text-foreground/80 hover:text-primary hover:bg-secondary/50'
-            }`}
-          onClick={onClick}
-        >
-          {link.name}
-        </a>
-      ))}
+      {links.map((link) => {
+        const isExternal = link.href.startsWith('http');
+        const LinkComponent = isExternal ? 'a' : Link;
+        const linkProps = isExternal 
+          ? { href: link.href, target: "_blank", rel: "noopener noreferrer" }
+          : { to: link.href };
+
+        return (
+          <LinkComponent
+            key={link.name}
+            {...linkProps}
+            className={`font-medium transition-all duration-300 px-3 py-2 rounded-md
+              ${mobile 
+                ? 'text-xl text-white hover:text-primary mb-2 w-full text-center py-3' 
+                : 'text-white/80 hover:text-primary hover:bg-white/5'
+              }`}
+            onClick={onClick}
+          >
+            {link.name}
+          </LinkComponent>
+        );
+      })}
     </>
   );
 };

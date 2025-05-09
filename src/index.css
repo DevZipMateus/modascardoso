@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -6,38 +7,39 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 220 20% 20%;
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 20%;
+    --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 20%;
+    --popover-foreground: 0 0% 10%;
     
-    --secondary: 215 30% 92%;
-    --secondary-foreground: 215 35% 25%;
-    --muted: 215 30% 92%;
-    --muted-foreground: 215 25% 40%;
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 40%;
     
-    --primary: 175 65% 35%;
+    /* Gold accent color */
+    --primary: 35 60% 55%;
     --primary-foreground: 0 0% 100%;
-    --accent: 175 70% 40%;
+    --accent: 35 70% 60%;
     --accent-foreground: 0 0% 100%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 175 65% 35%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 35 60% 55%;
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 0 0% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 222 91.2% 59.8%;
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 35 60% 55%;
   }
 }
 
@@ -215,6 +217,26 @@ html {
   transform: translateY(1px);
 }
 
+/* Gold text class */
+.text-gold {
+  color: hsl(35, 70%, 60%);
+}
+
+/* Gold background class */
+.bg-gold {
+  background-color: hsl(35, 70%, 60%);
+}
+
+/* Black and gold gradient */
+.bg-black-gold-gradient {
+  background: linear-gradient(135deg, #000 0%, #8E793E 100%);
+}
+
+/* Gold border */
+.border-gold {
+  border-color: hsl(35, 70%, 60%);
+}
+
 /* Mobile menu improvements */
 @media (max-width: 768px) {
   .mobile-nav-link {
@@ -265,4 +287,10 @@ html {
   .section-padding {
     @apply py-6;
   }
+}
+
+/* Prevent horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
 }

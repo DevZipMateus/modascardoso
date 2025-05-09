@@ -22,7 +22,7 @@ const WhatsAppButton = () => {
   }, []);
 
   const handleOpenWhatsApp = () => {
-    window.open('https://wa.me/5511987654321?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20contábeis.', '_blank');
+    window.open('https://wa.me/5511911817210?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Modas%20Cardoso.', '_blank');
     setIsOpen(false);
   };
 
@@ -42,7 +42,7 @@ const WhatsAppButton = () => {
             </button>
           </div>
           <p className="text-gray-600 text-sm mb-3">
-            Olá! Estamos aqui para ajudar com suas dúvidas sobre serviços contábeis.
+            Olá! Estamos aqui para ajudar com suas dúvidas sobre nossos produtos e serviços.
           </p>
           <button
             onClick={handleOpenWhatsApp}
@@ -53,7 +53,7 @@ const WhatsAppButton = () => {
               alt="WhatsApp" 
               className="w-5 h-5 mr-2" 
             />
-            Iniciar conversa
+            Falar com Karolliny
           </button>
         </div>
       )}
