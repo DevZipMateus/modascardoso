@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, X, FileText } from 'lucide-react';
+import { Check, X, ShoppingBag } from 'lucide-react';
 
 const PlansSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -27,54 +27,54 @@ const PlansSection = () => {
     };
   }, []);
   
-  const plans = [
+  const collections = [
     {
-      name: "Essencial",
-      description: "Para micro e pequenas empresas",
-      price: yearlySub ? 399 : 449,
+      name: "Coleção Casual",
+      description: "Para o dia a dia",
+      price: yearlySub ? 79 : 89,
       features: [
-        { included: true, text: "Abertura de empresa" },
-        { included: true, text: "Contabilidade fiscal" },
-        { included: true, text: "Apuração de impostos" },
-        { included: true, text: "Folha de pagamento (até 5 funcionários)" },
-        { included: false, text: "Assessoria tributária" },
-        { included: false, text: "Planejamento tributário" },
-        { included: false, text: "Gestão financeira" }
+        { included: true, text: "Blusas estilosas" },
+        { included: true, text: "Calças confortáveis" },
+        { included: true, text: "Vestidos básicos" },
+        { included: true, text: "Acessórios combinando" },
+        { included: false, text: "Sapatos premium" },
+        { included: false, text: "Bolsas exclusivas" },
+        { included: false, text: "Peças de edição limitada" }
       ],
       popular: false,
-      cta: "Escolher Plano"
+      cta: "Ver Coleção"
     },
     {
-      name: "Empresarial",
-      description: "Para empresas em crescimento",
-      price: yearlySub ? 799 : 899,
+      name: "Coleção Verão",
+      description: "Tendências da estação",
+      price: yearlySub ? 119 : 139,
       features: [
-        { included: true, text: "Abertura de empresa" },
-        { included: true, text: "Contabilidade fiscal" },
-        { included: true, text: "Apuração de impostos" },
-        { included: true, text: "Folha de pagamento (até 15 funcionários)" },
-        { included: true, text: "Assessoria tributária" },
-        { included: true, text: "Planejamento tributário básico" },
-        { included: false, text: "Gestão financeira completa" }
+        { included: true, text: "Blusas estilosas" },
+        { included: true, text: "Shorts e saias" },
+        { included: true, text: "Vestidos estampados" },
+        { included: true, text: "Acessórios de verão" },
+        { included: true, text: "Sandálias da moda" },
+        { included: true, text: "Bolsas de praia" },
+        { included: false, text: "Óculos de sol exclusivos" }
       ],
       popular: true,
-      cta: "Escolher Plano"
+      cta: "Ver Coleção"
     },
     {
-      name: "Consultivo",
-      description: "Para empresas estabelecidas",
-      price: yearlySub ? 1299 : 1499,
+      name: "Coleção Premium",
+      description: "Peças exclusivas",
+      price: yearlySub ? 189 : 219,
       features: [
-        { included: true, text: "Abertura de empresa" },
-        { included: true, text: "Contabilidade fiscal" },
-        { included: true, text: "Apuração de impostos" },
-        { included: true, text: "Folha de pagamento (até 30 funcionários)" },
-        { included: true, text: "Assessoria tributária avançada" },
-        { included: true, text: "Planejamento tributário completo" },
-        { included: true, text: "Gestão financeira completa" }
+        { included: true, text: "Blusas premium" },
+        { included: true, text: "Calças de alfaiataria" },
+        { included: true, text: "Vestidos para eventos" },
+        { included: true, text: "Acessórios luxuosos" },
+        { included: true, text: "Sapatos de marca" },
+        { included: true, text: "Bolsas exclusivas" },
+        { included: true, text: "Peças de edição limitada" }
       ],
       popular: false,
-      cta: "Escolher Plano"
+      cta: "Ver Coleção"
     }
   ];
   
@@ -87,18 +87,18 @@ const PlansSection = () => {
         
         <div className="text-center mb-16 relative z-10">
           <span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 animate-on-scroll">
-            Nossos Planos
+            Nossas Coleções
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">
-            Escolha o Plano Ideal para o Seu Negócio
+            Descubra Nossas Linhas Exclusivas
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8 animate-on-scroll">
-            Soluções completas e personalizadas para atender às necessidades específicas da sua empresa,
-            independente do tamanho ou segmento.
+            Peças selecionadas com cuidado para atender ao seu estilo pessoal,
+            independente da ocasião ou temporada.
           </p>
 
           <div className="flex items-center justify-center space-x-4 animate-on-scroll">
-            <span className={`text-sm font-medium ${!yearlySub ? 'text-foreground' : 'text-muted-foreground'}`}>Mensal</span>
+            <span className={`text-sm font-medium ${!yearlySub ? 'text-foreground' : 'text-muted-foreground'}`}>Preço Normal</span>
             <button 
               className="relative w-14 h-7 rounded-full bg-primary/20 p-1 transition-colors" 
               onClick={() => setYearlySub(!yearlySub)}
@@ -108,22 +108,22 @@ const PlansSection = () => {
               ></span>
             </button>
             <div className="flex items-center">
-              <span className={`text-sm font-medium ${yearlySub ? 'text-foreground' : 'text-muted-foreground'}`}>Anual</span>
-              <span className="ml-2 bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full">Economize 10%</span>
+              <span className={`text-sm font-medium ${yearlySub ? 'text-foreground' : 'text-muted-foreground'}`}>Promoção</span>
+              <span className="ml-2 bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full">15% OFF</span>
             </div>
           </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 relative z-10">
-          {plans.map((plan, index) => (
+          {collections.map((collection, index) => (
             <PlanCard 
               key={index} 
-              name={plan.name} 
-              description={plan.description} 
-              price={plan.price} 
-              features={plan.features} 
-              popular={plan.popular} 
-              cta={plan.cta} 
+              name={collection.name} 
+              description={collection.description} 
+              price={collection.price} 
+              features={collection.features} 
+              popular={collection.popular} 
+              cta={collection.cta} 
               index={index} 
             />
           ))}
@@ -174,7 +174,7 @@ const PlanCard = ({
     <CardContent className="text-center">
       <div className="mb-6">
         <span className="text-4xl font-bold">R${price}</span>
-        <span className="text-muted-foreground">/mês</span>
+        <span className="text-muted-foreground">,90</span>
       </div>
       
       <ul className="space-y-3 text-left mb-8">
@@ -193,7 +193,7 @@ const PlanCard = ({
     
     <CardFooter className="pt-0 pb-8">
       <Button className={`quote-btn w-full rounded-md shadow-md transition-all duration-300 flex items-center justify-center gap-2 ${popular ? 'bg-primary hover:bg-primary/90 text-white' : 'bg-primary/10 hover:bg-primary/20 text-primary'}`}>
-        <FileText size={18} className={popular ? 'text-white' : 'text-primary'} />
+        <ShoppingBag size={18} className={popular ? 'text-white' : 'text-primary'} />
         {cta}
       </Button>
     </CardFooter>

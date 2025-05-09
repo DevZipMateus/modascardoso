@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { FileText, PieChart, Building, Shield, FileCheck, BarChart } from 'lucide-react';
+import { Shirt, Palette, TrendingUp, Tag, Crown, MessageSquare } from 'lucide-react';
 
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -26,36 +26,36 @@ const ServicesSection = () => {
     };
   }, []);
   
-  const services = [
+  const products = [
     {
-      icon: <Building className="h-12 w-12 text-primary" />,
-      title: "Abertura e Legalização de Empresas",
-      description: "Simplificamos todo o processo de criação da sua empresa, cuidando da burocracia para você iniciar suas atividades rapidamente."
+      icon: <Shirt className="h-12 w-12 text-primary" />,
+      title: "Roupas Femininas",
+      description: "Peças exclusivas e de qualidade com as melhores tendências da moda feminina para todos os gostos e ocasiões."
     }, 
     {
-      icon: <FileText className="h-12 w-12 text-primary" />,
-      title: "Contabilidade Empresarial",
-      description: "Registro preciso de todas as operações fiscais e contábeis, garantindo conformidade com as exigências legais."
+      icon: <Palette className="h-12 w-12 text-primary" />,
+      title: "Diversos Estilos",
+      description: "Do casual ao elegante, encontre o estilo que combina com você e se destaque com nossas peças exclusivas."
     }, 
     {
-      icon: <PieChart className="h-12 w-12 text-primary" />,
-      title: "Gestão Fiscal e Tributária",
-      description: "Planejamento tributário estratégico para reduzir legalmente a carga de impostos e otimizar os recursos da sua empresa."
+      icon: <TrendingUp className="h-12 w-12 text-primary" />,
+      title: "Últimas Tendências",
+      description: "Atualizamos nosso catálogo constantemente com as últimas tendências do mercado da moda feminina."
     }, 
     {
-      icon: <Shield className="h-12 w-12 text-primary" />,
-      title: "Consultoria Tributária",
-      description: "Orientação especializada para tomadas de decisão estratégicas, maximizando resultados e minimizando riscos."
+      icon: <Tag className="h-12 w-12 text-primary" />,
+      title: "Preços Acessíveis",
+      description: "Moda de qualidade com preços que cabem no seu bolso, para você renovar seu guarda-roupa sem gastar muito."
     }, 
     {
-      icon: <FileCheck className="h-12 w-12 text-primary" />,
-      title: "Departamento Pessoal",
-      description: "Gestão completa de folha de pagamento, admissões, demissões e toda a rotina trabalhista da sua empresa."
+      icon: <Crown className="h-12 w-12 text-primary" />,
+      title: "Figurinhas para Status",
+      description: "Mais de 15.000 figurinhas exclusivas para personalizar seus status nas redes sociais por apenas R$ 9,99."
     }, 
     {
-      icon: <BarChart className="h-12 w-12 text-primary" />,
-      title: "Gestão Financeira",
-      description: "Acompanhamento de indicadores financeiros, fluxo de caixa e análises gerenciais para decisões mais assertivas."
+      icon: <MessageSquare className="h-12 w-12 text-primary" />,
+      title: "Atendimento Personalizado",
+      description: "Atendimento exclusivo via WhatsApp para tirar dúvidas e ajudar na escolha das peças ideais para você."
     }
   ];
   
@@ -64,24 +64,24 @@ const ServicesSection = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 animate-on-scroll">
-            Nossos Serviços
+            Nossos Produtos
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">
-            Soluções Contábeis Completas
+            Moda Feminina Exclusiva
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto animate-on-scroll">
-            Oferecemos uma gama completa de serviços contábeis e financeiros para atender às necessidades 
-            específicas do seu negócio.
+            Descubra nossa coleção completa de peças femininas, com variedade de estilos e 
+            tendências para todos os gostos.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+          {products.map((product, index) => (
             <ServiceCard 
               key={index} 
-              icon={service.icon} 
-              title={service.title} 
-              description={service.description} 
+              icon={product.icon} 
+              title={product.title} 
+              description={product.description} 
               index={index} 
             />
           ))}
