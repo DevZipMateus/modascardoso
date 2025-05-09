@@ -54,10 +54,12 @@ const Header = () => {
           {/* Desktop Menu */}
           <nav className="hidden md:flex items-center space-x-1">
             <NavLinks />
-            <Button className="quote-btn ml-4 text-black bg-primary hover:bg-primary/90 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2">
-              <ShoppingBag size={18} />
-              Loja Online
-            </Button>
+            <Link to="#shop">
+              <Button className="quote-btn ml-4 text-black bg-primary hover:bg-primary/90 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2">
+                <ShoppingBag size={18} />
+                Loja Online
+              </Button>
+            </Link>
           </nav>
 
           {/* Mobile Menu using Sheet from shadcn/ui */}
@@ -73,14 +75,14 @@ const Header = () => {
                 <nav className="flex flex-col items-center space-y-4 text-lg">
                   <NavLinks mobile />
                   <SheetClose asChild>
-                    <Button 
-                      className="quote-btn mt-4 w-full text-black bg-primary hover:bg-primary/90 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 py-3 text-base"
-                      as={Link}
-                      to="#shop"
-                    >
-                      <ShoppingBag size={18} />
-                      Loja Online
-                    </Button>
+                    <Link to="#shop">
+                      <Button 
+                        className="quote-btn mt-4 w-full text-black bg-primary hover:bg-primary/90 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 py-3 text-base"
+                      >
+                        <ShoppingBag size={18} />
+                        Loja Online
+                      </Button>
+                    </Link>
                   </SheetClose>
                 </nav>
               </SheetContent>
@@ -111,25 +113,40 @@ const NavLinks = ({ mobile, onClick }: NavLinksProps) => {
     <>
       {links.map((link) => {
         const isExternal = link.href.startsWith('http');
-        const LinkComponent = isExternal ? 'a' : Link;
-        const linkProps = isExternal 
-          ? { href: link.href, target: "_blank", rel: "noopener noreferrer" }
-          : { to: link.href };
-
-        return (
-          <LinkComponent
-            key={link.name}
-            {...linkProps}
-            className={`font-medium transition-all duration-300 px-3 py-2 rounded-md
-              ${mobile 
-                ? 'text-xl text-white hover:text-primary mb-2 w-full text-center py-3' 
-                : 'text-white/80 hover:text-primary hover:bg-white/5'
-              }`}
-            onClick={onClick}
-          >
-            {link.name}
-          </LinkComponent>
-        );
+        
+        if (isExternal) {
+          return (
+            <a
+              key={link.name}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`font-medium transition-all duration-300 px-3 py-2 rounded-md
+                ${mobile 
+                  ? 'text-xl text-white hover:text-primary mb-2 w-full text-center py-3' 
+                  : 'text-white/80 hover:text-primary hover:bg-white/5'
+                }`}
+              onClick={onClick}
+            >
+              {link.name}
+            </a>
+          );
+        } else {
+          return (
+            <Link
+              key={link.name}
+              to={link.href}
+              className={`font-medium transition-all duration-300 px-3 py-2 rounded-md
+                ${mobile 
+                  ? 'text-xl text-white hover:text-primary mb-2 w-full text-center py-3' 
+                  : 'text-white/80 hover:text-primary hover:bg-white/5'
+                }`}
+              onClick={onClick}
+            >
+              {link.name}
+            </Link>
+          );
+        }
       })}
     </>
   );
