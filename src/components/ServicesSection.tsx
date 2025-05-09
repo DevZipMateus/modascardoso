@@ -1,9 +1,9 @@
-
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Shirt, Palette, TrendingUp, Tag, Crown, MessageSquare, ShoppingBag, BookOpen } from 'lucide-react';
+import { Shirt, Palette, TrendingUp, Tag, Crown, MessageSquare, ShoppingBag, BookOpen, Package } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -95,6 +95,35 @@ const ServicesSection = () => {
           </div>
         </div>
 
+        {/* Mercado Livre Section */}
+        <div className="mt-16 bg-[#FFE600]/10 rounded-xl p-8 border border-[#FFE600]/30 animate-on-scroll">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-left">
+              <h3 className="text-2xl font-bold mb-2">Compre pelo Mercado Livre</h3>
+              <p className="text-muted-foreground mb-4">
+                Visite nossa loja oficial no Mercado Livre para uma experiência de compra segura e com diversas opções de pagamento.
+                Frete rápido e produtos com garantia de qualidade!
+              </p>
+            </div>
+            <div>
+              <a 
+                href="https://lista.mercadolivre.com.br/_CustId_2403813205?item_id=MLB5364306150&category_id=MLB108704&seller_id=2403813205&client=recoview-selleritems&recos_listing=true#origin=vip&component=sellerData&typeSeller=classic" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block"
+              >
+                <Button 
+                  size="lg" 
+                  className="bg-[#FFE600] hover:bg-[#FFE600]/90 text-black font-bold shadow-lg hover:shadow-xl transform transition-all hover:-translate-y-1 group"
+                >
+                  <Package className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
+                  Ver Nossos Produtos
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
+
         <div className="mt-16 text-center animate-on-scroll">
           <Link to="#shop">
             
@@ -103,6 +132,7 @@ const ServicesSection = () => {
       </div>
     </section>;
 };
+
 interface ServiceCardProps {
   icon: React.ReactNode;
   title: string;
