@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -5,7 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { useToast } from '@/components/ui/use-toast';
-import { ShoppingBag, CheckCircle, Instagram, Send, Images } from 'lucide-react';
+import { ShoppingBag, CheckCircle, Instagram, Send, Images, X } from 'lucide-react';
 import { 
   Carousel,
   CarouselContent,
@@ -13,10 +14,16 @@ import {
   CarouselNext,
   CarouselPrevious
 } from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogClose
+} from "@/components/ui/dialog";
 
 const CardosoInfluencer = () => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,6 +69,14 @@ const CardosoInfluencer = () => {
     "/lovable-uploads/553656341119775.jpeg",
     "/lovable-uploads/693703783064581.jpeg"
   ];
+
+  const openImagePreview = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+  };
+
+  const closeImagePreview = () => {
+    setSelectedImage(null);
+  };
 
   return (
     <div className="overflow-x-hidden bg-black text-white">
@@ -119,7 +134,11 @@ const CardosoInfluencer = () => {
             {/* Desktop Gallery Grid */}
             <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-on-scroll">
               {figurePackImages.map((image, index) => (
-                <div key={index} className="overflow-hidden rounded-lg border border-primary/20 aspect-square">
+                <div 
+                  key={index} 
+                  className="overflow-hidden rounded-lg border border-primary/20 aspect-square cursor-pointer hover:border-primary transition-colors"
+                  onClick={() => openImagePreview(image)}
+                >
                   <img 
                     src={image} 
                     alt={`Exemplo de figurinha ${index + 1}`} 
@@ -136,7 +155,10 @@ const CardosoInfluencer = () => {
                   {figurePackImages.map((image, index) => (
                     <CarouselItem key={index}>
                       <div className="p-1">
-                        <div className="overflow-hidden rounded-lg border border-primary/20 aspect-square">
+                        <div 
+                          className="overflow-hidden rounded-lg border border-primary/20 aspect-square cursor-pointer hover:border-primary transition-colors"
+                          onClick={() => openImagePreview(image)}
+                        >
                           <img 
                             src={image} 
                             alt={`Exemplo de figurinha ${index + 1}`} 
@@ -294,6 +316,24 @@ const CardosoInfluencer = () => {
           </div>
         </section>
       </main>
+      
+      {/* Image Preview Dialog */}
+      <Dialog open={!!selectedImage} onOpenChange={() => closeImagePreview()}>
+        <DialogContent className="max-w-5xl bg-black/95 border-primary/20 p-0 overflow-hidden">
+          <div className="relative w-full h-full flex items-center justify-center p-2 sm:p-4">
+            {selectedImage && (
+              <img 
+                src={selectedImage} 
+                alt="Figurinha em destaque" 
+                className="max-h-[80vh] max-w-full object-contain" 
+              />
+            )}
+            <DialogClose className="absolute top-2 right-2 bg-primary/10 hover:bg-primary/20 text-white rounded-full p-2">
+              <X className="h-6 w-6" />
+            </DialogClose>
+          </div>
+        </DialogContent>
+      </Dialog>
       
       <Footer />
       <WhatsAppButton />
