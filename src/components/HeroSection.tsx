@@ -1,14 +1,20 @@
+
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Instagram, ShoppingBag, BookOpen, Package } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useIsMobile } from '@/hooks/use-mobile';
+
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  
   useEffect(() => {
     if (sectionRef.current) {
       sectionRef.current.classList.add('animate-fade-in');
     }
   }, []);
+  
   const scrollToNextSection = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
@@ -17,6 +23,7 @@ const HeroSection = () => {
       });
     }
   };
+  
   return <section id="hero" ref={sectionRef} className="relative min-h-screen flex items-center justify-center pt-16">
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0 bg-black">
@@ -37,47 +44,89 @@ const HeroSection = () => {
             Há 3 anos trazendo o que há de melhor em moda feminina para você. Compre pelo Instagram, WhatsApp, Mercado Livre ou Shopee.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up [animation-delay:900ms] mb-8">
-            <Button size="lg" className="rounded-md shadow-lg bg-primary hover:bg-primary/90 text-black font-medium transition-all duration-300" asChild>
-              <a href="https://instagram.com/Modas.cardos0" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                <Instagram size={20} />
-                Visite Nossa Loja
-              </a>
-            </Button>
-            
-            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/20 group rounded-md shadow-md transition-all duration-300 flex gap-2" asChild>
-              <Link to="/cardoso-influencer" className="flex items-center gap-2">
-                <ShoppingBag size={20} className="group-hover:animate-pulse" />
-                <span>Cardoso Influencer</span>
-              </Link>
-            </Button>
-          </div>
+          {/* Mobile optimized button layout */}
+          {isMobile ? (
+            <div className="grid grid-cols-1 gap-4 animate-slide-up [animation-delay:900ms] mb-8">
+              <Button size="lg" className="w-full rounded-md shadow-lg bg-primary hover:bg-primary/90 text-black font-medium transition-all duration-300 h-12" asChild>
+                <a href="https://instagram.com/Modas.cardos0" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                  <Instagram size={20} className="mr-2" />
+                  <span>Visite Nossa Loja</span>
+                </a>
+              </Button>
+              
+              <Button size="lg" variant="outline" className="w-full border-primary text-primary hover:bg-primary/20 group rounded-md shadow-md transition-all duration-300 h-12" asChild>
+                <Link to="/cardoso-influencer" className="flex items-center justify-center">
+                  <ShoppingBag size={20} className="mr-2 group-hover:animate-pulse" />
+                  <span>Cardoso Influencer</span>
+                </Link>
+              </Button>
+              
+              <Button size="lg" className="w-full rounded-md shadow-lg bg-primary hover:bg-primary/90 text-black font-medium transition-all duration-300 h-12" asChild>
+                <a href="https://wa.me/c/5511911817210" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                  <BookOpen size={20} className="mr-2" />
+                  <span>Ver Catálogo Completo</span>
+                </a>
+              </Button>
+              
+              <Button size="lg" variant="outline" className="w-full border-[#FFE600] text-[#FFE600] hover:bg-[#FFE600]/20 group rounded-md shadow-md transition-all duration-300 h-12" asChild>
+                <a href="https://lista.mercadolivre.com.br/_CustId_2403813205?item_id=MLB5364306150&category_id=MLB108704&seller_id=2403813205&client=recoview-selleritems&recos_listing=true#origin=vip&component=sellerData&typeSeller=classic" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                  <Package size={20} className="mr-2 group-hover:animate-pulse" />
+                  <span>Ver Nossos Produtos</span>
+                </a>
+              </Button>
+              
+              <Button size="lg" className="w-full rounded-md shadow-lg bg-[#EE4D2D] hover:bg-[#EE4D2D]/90 text-white font-medium transition-all duration-300 h-12" asChild>
+                <a href="https://shopee.com.br/modas.cardoso" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                  <ShoppingBag size={20} className="mr-2" />
+                  <span>Comprar na Shopee</span>
+                </a>
+              </Button>
+            </div>
+          ) : (
+            <>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up [animation-delay:900ms] mb-8">
+                <Button size="lg" className="rounded-md shadow-lg bg-primary hover:bg-primary/90 text-black font-medium transition-all duration-300" asChild>
+                  <a href="https://instagram.com/Modas.cardos0" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <Instagram size={20} />
+                    Visite Nossa Loja
+                  </a>
+                </Button>
+                
+                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/20 group rounded-md shadow-md transition-all duration-300 flex gap-2" asChild>
+                  <Link to="/cardoso-influencer" className="flex items-center gap-2">
+                    <ShoppingBag size={20} className="group-hover:animate-pulse" />
+                    <span>Cardoso Influencer</span>
+                  </Link>
+                </Button>
+              </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up [animation-delay:1000ms] mb-8">
-            <Button size="lg" className="rounded-md shadow-lg bg-primary hover:bg-primary/90 text-black font-medium transition-all duration-300" asChild>
-              <a href="https://wa.me/c/5511911817210" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                <BookOpen size={20} />
-                Ver Catálogo Completo
-              </a>
-            </Button>
-            
-            <Button size="lg" variant="outline" className="border-[#FFE600] text-[#FFE600] hover:bg-[#FFE600]/20 group rounded-md shadow-md transition-all duration-300 flex gap-2" asChild>
-              <a href="https://lista.mercadolivre.com.br/_CustId_2403813205?item_id=MLB5364306150&category_id=MLB108704&seller_id=2403813205&client=recoview-selleritems&recos_listing=true#origin=vip&component=sellerData&typeSeller=classic" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                <Package size={20} className="group-hover:animate-pulse" />
-                <span>Ver Nossos Produtos</span>
-              </a>
-            </Button>
-          </div>
-          
-          {/* Shopee Button */}
-          <div className="flex justify-center items-center animate-slide-up [animation-delay:1100ms] mb-16">
-            <Button size="lg" className="rounded-md shadow-lg bg-[#EE4D2D] hover:bg-[#EE4D2D]/90 text-white font-medium transition-all duration-300" asChild>
-              <a href="https://shopee.com.br/modas.cardoso" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                <ShoppingBag size={20} />
-                Comprar na Shopee
-              </a>
-            </Button>
-          </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up [animation-delay:1000ms] mb-8">
+                <Button size="lg" className="rounded-md shadow-lg bg-primary hover:bg-primary/90 text-black font-medium transition-all duration-300" asChild>
+                  <a href="https://wa.me/c/5511911817210" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <BookOpen size={20} />
+                    Ver Catálogo Completo
+                  </a>
+                </Button>
+                
+                <Button size="lg" variant="outline" className="border-[#FFE600] text-[#FFE600] hover:bg-[#FFE600]/20 group rounded-md shadow-md transition-all duration-300 flex gap-2" asChild>
+                  <a href="https://lista.mercadolivre.com.br/_CustId_2403813205?item_id=MLB5364306150&category_id=MLB108704&seller_id=2403813205&client=recoview-selleritems&recos_listing=true#origin=vip&component=sellerData&typeSeller=classic" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <Package size={20} className="group-hover:animate-pulse" />
+                    <span>Ver Nossos Produtos</span>
+                  </a>
+                </Button>
+              </div>
+              
+              {/* Shopee Button */}
+              <div className="flex justify-center items-center animate-slide-up [animation-delay:1100ms] mb-16">
+                <Button size="lg" className="rounded-md shadow-lg bg-[#EE4D2D] hover:bg-[#EE4D2D]/90 text-white font-medium transition-all duration-300" asChild>
+                  <a href="https://shopee.com.br/modas.cardoso" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <ShoppingBag size={20} />
+                    Comprar na Shopee
+                  </a>
+                </Button>
+              </div>
+            </>
+          )}
         </div>
       </div>
 
