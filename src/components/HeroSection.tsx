@@ -68,7 +68,7 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up [animation-delay:1000ms] mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up [animation-delay:1000ms] mb-8">
             <Button 
               size="lg" 
               className="rounded-md shadow-lg bg-primary hover:bg-primary/90 text-black font-medium transition-all duration-300"
@@ -94,6 +94,20 @@ const HeroSection = () => {
               >
                 <Package size={20} className="group-hover:animate-pulse" />
                 <span>Ver Nossos Produtos</span>
+              </a>
+            </Button>
+          </div>
+          
+          {/* Shopee Button */}
+          <div className="flex justify-center items-center animate-slide-up [animation-delay:1100ms] mb-16">
+            <Button 
+              size="lg" 
+              className="rounded-md shadow-lg bg-[#EE4D2D] hover:bg-[#EE4D2D]/90 text-white font-medium transition-all duration-300"
+              asChild
+            >
+              <a href="https://shopee.com.br/modas.cardoso" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <ShoppingBag size={20} />
+                Comprar na Shopee
               </a>
             </Button>
           </div>

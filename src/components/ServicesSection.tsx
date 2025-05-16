@@ -22,31 +22,33 @@ const ServicesSection = () => {
       animatedElements.forEach(el => observer.unobserve(el));
     };
   }, []);
-  const products = [{
-    icon: <Shirt className="h-12 w-12 text-primary" />,
-    title: "Roupas Femininas",
-    description: "Peças exclusivas e de qualidade com as melhores tendências da moda feminina para todos os gostos e ocasiões."
-  }, {
-    icon: <Palette className="h-12 w-12 text-primary" />,
-    title: "Diversos Estilos",
-    description: "Do casual ao elegante, encontre o estilo que combina com você e se destaque com nossas peças exclusivas."
-  }, {
-    icon: <TrendingUp className="h-12 w-12 text-primary" />,
-    title: "Últimas Tendências",
-    description: "Atualizamos nosso catálogo constantemente com as últimas tendências do mercado da moda feminina."
-  }, {
-    icon: <Tag className="h-12 w-12 text-primary" />,
-    title: "Preços Acessíveis",
-    description: "Moda de qualidade com preços que cabem no seu bolso, para você renovar seu guarda-roupa sem gastar muito."
-  }, {
-    icon: <Crown className="h-12 w-12 text-primary" />,
-    title: "Figurinhas para Status",
-    description: "Mais de 15.000 figurinhas exclusivas para personalizar seus status nas redes sociais por apenas R$ 9,99."
-  }, {
-    icon: <MessageSquare className="h-12 w-12 text-primary" />,
-    title: "Atendimento Personalizado",
-    description: "Atendimento exclusivo via WhatsApp para tirar dúvidas e ajudar na escolha das peças ideais para você."
-  }];
+  const products = [
+    {
+      icon: <Shirt className="h-12 w-12 text-primary" />,
+      title: "Roupas Femininas",
+      description: "Peças exclusivas e de qualidade com as melhores tendências da moda feminina para todos os gostos e ocasiões."
+    }, {
+      icon: <Palette className="h-12 w-12 text-primary" />,
+      title: "Diversos Estilos",
+      description: "Do casual ao elegante, encontre o estilo que combina com você e se destaque com nossas peças exclusivas."
+    }, {
+      icon: <TrendingUp className="h-12 w-12 text-primary" />,
+      title: "Últimas Tendências",
+      description: "Atualizamos nosso catálogo constantemente com as últimas tendências do mercado da moda feminina."
+    }, {
+      icon: <Tag className="h-12 w-12 text-primary" />,
+      title: "Preços Acessíveis",
+      description: "Moda de qualidade com preços que cabem no seu bolso, para você renovar seu guarda-roupa sem gastar muito."
+    }, {
+      icon: <Crown className="h-12 w-12 text-primary" />,
+      title: "Figurinhas para Status",
+      description: "Mais de 15.000 figurinhas exclusivas para personalizar seus status nas redes sociais por apenas R$ 9,99."
+    }, {
+      icon: <MessageSquare className="h-12 w-12 text-primary" />,
+      title: "Atendimento Personalizado",
+      description: "Atendimento exclusivo via WhatsApp para tirar dúvidas e ajudar na escolha das peças ideais para você."
+    }
+  ];
   return <section id="services" ref={sectionRef} className="section-padding bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto">
         <div className="text-center mb-16">
@@ -124,6 +126,35 @@ const ServicesSection = () => {
           </div>
         </div>
 
+        {/* Shopee Section */}
+        <div className="mt-16 bg-[#EE4D2D]/10 rounded-xl p-8 border border-[#EE4D2D]/30 animate-on-scroll">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-left">
+              <h3 className="text-2xl font-bold mb-2">Compre na Shopee</h3>
+              <p className="text-muted-foreground mb-4">
+                Aproveite os preços baixos e as promoções exclusivas da nossa loja oficial na Shopee.
+                Frete grátis em muitos produtos e pagamento facilitado!
+              </p>
+            </div>
+            <div>
+              <a 
+                href="https://shopee.com.br/modas.cardoso" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block"
+              >
+                <Button 
+                  size="lg" 
+                  className="bg-[#EE4D2D] hover:bg-[#EE4D2D]/90 text-white font-bold shadow-lg hover:shadow-xl transform transition-all hover:-translate-y-1 group"
+                >
+                  <ShoppingBag className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
+                  Comprar na Shopee
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
+
         <div className="mt-16 text-center animate-on-scroll">
           <Link to="#shop">
             
@@ -139,6 +170,7 @@ interface ServiceCardProps {
   description: string;
   index: number;
 }
+
 const ServiceCard = ({
   icon,
   title,
@@ -151,4 +183,5 @@ const ServiceCard = ({
       <p className="text-muted-foreground">{description}</p>
     </CardContent>
   </Card>;
+
 export default ServicesSection;
