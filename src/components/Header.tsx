@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -100,12 +101,13 @@ interface NavLinksProps {
 
 const NavLinks = ({ mobile, onClick }: NavLinksProps) => {
   const links = [
-    { name: 'Início', href: '/' },
-    { name: 'Sobre', href: '#about' },
-    { name: 'Produtos', href: '#services' },
+    { name: 'Início', href: '/#hero' },
+    { name: 'Sobre', href: '/#about' },
+    { name: 'Produtos', href: '/#products' },
+    { name: 'Contato', href: '/#contact' },
     { name: 'Instagram', href: 'https://instagram.com/Modas.cardos0' },
+    { name: 'Shopee', href: 'https://shopee.com.br/modas.cardoso' },
     { name: 'Cardoso Influencer', href: '/cardoso-influencer' },
-    { name: 'Contato', href: '#contact' },
   ];
 
   return (

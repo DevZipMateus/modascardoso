@@ -40,7 +40,7 @@ const HeroSection = () => {
           </h1>
           
           <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto animate-slide-up [animation-delay:700ms]">
-            Há 3 anos trazendo o que há de melhor em moda feminina para você. Compre pelo Instagram, WhatsApp ou Mercado Livre.
+            Há 3 anos trazendo o que há de melhor em moda feminina para você. Compre pelo Instagram, WhatsApp, Mercado Livre ou Shopee.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up [animation-delay:900ms] mb-8">
